@@ -1,0 +1,39 @@
+# Build artifacts
+build/
+bin/
+*.o
+*.obj
+*.exe
+*.dll
+*.app
+
+# IDE files
+.vscode/
+*.suo
+*.user
+*.vcxproj.user
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Icon\r
+~$*
+
+# Misc
+.DS_Store
+*.log
+# Build outputs
+*.exe
+*.out
+*.o
+*.obj
+/build/
+
+# Visual Studio
+.vscode/
+*.VC.db
+*.VC.VC.opendb
+
+# OS files
+Thumbs.db
+.DS_Store

@@ -1,0 +1,14 @@
+1) Create an empty repository on GitHub (no README, no .gitignore) and copy its HTTPS URL, e.g. https://github.com/<your-username>/<repo>.git
+
+2) Locally run these commands in this folder:
+
+```powershell
+# set the remote and push
+git remote add origin https://github.com/<your-username>/<repo>.git
+git branch -M main
+git push -u origin main
+```
+
+If Git prompts for credentials, use your GitHub username and a personal access token (PAT) as the password, or set up SSH keys and use the SSH repo URL.
+
+If you want me to run the push from here, paste the repository URL and confirm I may run `git push` (you must provide auth or push from a session that has your credentials).
