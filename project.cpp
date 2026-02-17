@@ -1,37 +1,83 @@
 #include <iostream>
 #include <vector>
+#include <string>
+
 using namespace std;
 
+// Student class
 class Student {
 public:
     string indexNumber;
-    string name;
-    Student(string idx, string n) : indexNumber(idx), name(n) {}
-    void display() {
-        cout << "Index: " << indexNumber << ", Name: " << name << endl;
+    string fullName;
+    string programme;
+
+    void inputStudent() {
+        cout << "Enter Index Number: ";
+        cin >> indexNumber;
+        cin.ignore();
+
+        cout << "Enter Full Name: ";
+        getline(cin, fullName);
+
+        cout << "Enter Programme: ";
+        getline(cin, programme);
+    }
+
+    void displayStudent(int count) const {
+        cout << count << ". "
+             << indexNumber << " - "
+             << fullName << " - "
+             << programme << endl;
     }
 };
+
+// Function to display menu
+void showMenu() {
+    cout << "\n===== DIGITAL ATTENDANCE SYSTEM =====\n";
+    cout << "1. Register Student\n";
+    cout << "2. View All Students\n";
+    cout << "3. Exit\n";
+    cout << "Choose an option: ";
+}
 
 int main() {
     vector<Student> students;
     int choice;
+
     do {
-        cout << "1. Register student\n2. View students\n3. Exit\n";
+        showMenu();
         cin >> choice;
-        cin.ignore(); // Handle newline
-        if (choice == 1) {
-            string idx, name;
-            cout << "Enter index number: ";
-            cin >> idx;
-            cout << "Enter name: ";
-            getline(cin, name); // Allow spaces in name
-            students.push_back(Student(idx, name));
-        } else if (choice == 2) {
-            if (students.empty()) {
-                cout << "No students registered.\n";
-            } else {
-                for (auto& s : students) s.display();
-            }
+        cin.ignore();
+
+        switch (choice) {
+        case 1: {
+            Student s;
+            s.inputStudent();
+            students.push_back(s);
+            cout << "Student registered successfully!\n";
+            break;
         }
+
+        case 2:
+            if (students.empty()) {
+                cout << "No students registered yet.\n";
+            } else {
+                cout << "\n--- Registered Students ---\n";
+                for (size_t i = 0; i < students.size(); i++) {
+                    students[i].displayStudent(i + 1);
+                }
+            }
+            break;
+
+        case 3:
+            cout << "Exiting program...\n";
+            break;
+
+        default:
+            cout << "Invalid choice. Try again.\n";
+        }
+
     } while (choice != 3);
+
     return 0;
+}
